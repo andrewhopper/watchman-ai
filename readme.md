@@ -1,3 +1,7 @@
+
+⚠️ Warning: This project is currently in conceptual phase and not yet implemented. I welcome contributions, ideas and collaboration to help bring this vision to life! If you're interested in getting involved, please feel free to open issues, submit PRs or reach out to discuss.
+
+
 # WatchmanAI
 
 A compliance enforcement library for ensuring LLM-generated code adheres to predefined coding standards and rules.
