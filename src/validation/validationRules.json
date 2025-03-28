@@ -1,0 +1,42 @@
+[
+    {
+        "name": "License File",
+        "type": "filePresence",
+        "files": [
+            "LICENSE",
+            "LICENSE.md"
+        ]
+    },
+    {
+        "name": "README File",
+        "type": "filePresence",
+        "files": [
+            "readme.md"
+        ]
+    },
+    {
+        "name": "DB Schema Management",
+        "type": "placeholder",
+        "message": "DB Schema Management check executed."
+    },
+    {
+        "name": "Authorization Good",
+        "type": "placeholder",
+        "message": "Authorization check executed."
+    },
+    {
+        "name": "Authentication Good",
+        "type": "placeholder",
+        "message": "Authentication check executed."
+    },
+    {
+        "name": "Build Passes",
+        "type": "customCommand",
+        "command": "npm run build"
+    },
+    {
+        "name": "Testing Present",
+        "type": "placeholder",
+        "message": "Testing presence check executed."
+    }
+]

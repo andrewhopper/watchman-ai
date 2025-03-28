@@ -1,44 +1,67 @@
-
-⚠️ Warning: This project is currently in conceptual phase and not yet implemented. I welcome contributions, ideas and collaboration to help bring this vision to life! If you're interested in getting involved, please feel free to open issues, submit PRs or reach out to discuss.
-
-
-# WatchmanAI
-
-A compliance enforcement library for ensuring LLM-generated code adheres to predefined coding standards and rules.
+# Watchman AI - Command-Line Validation Tool
 
 ## Overview
+The Watchman AI Command-Line Validation Tool is designed to enforce rules, specifications, and standards in AI coding environments. It accepts a set of validation criteria and returns a comprehensive validation report.
 
-WatchmanAI integrates with tools like Hivemind and DotAI to validate and enforce coding standards, architectural patterns, and best practices in LLM-generated code. It acts as a guardian to ensure all generated code meets your organization's requirements.
+## Features
+- Accepts validation criteria via command-line arguments or configuration files.
+- Processes criteria using the Agno framework.
+- Generates detailed validation reports with errors and warnings.
 
-## Key Features
+## Setup Instructions
+1. **Install Dependencies:**
+   ```bash
+   npm install
+   ```
 
-- Real-time code compliance validation
-- Integration with Hivemind for rule management
-- DotAI compatibility for enhanced code analysis
-- Automated enforcement of coding standards
-- Configurable validation rules
+2. **Build the Project:**
+   ```bash
+   npm run build
+   ```
 
-## Getting Started
+## Usage Guidelines
+- **Run the Tool:**
+  ```bash
+  npm run dev -- [options]
+  ```
+  Replace `[options]` with the desired validation criteria.
 
-[Documentation and setup instructions coming soon]
+## Architecture
 
+```mermaid
+graph TD;
+    A[Validation Engine] --> B[File Presence Validator];
+    A --> C[Regex Check Validator];
+    A --> D[Codebase Grep Validator];
+    A --> E[Custom Command Executor];
+    B --> F[Validation Rules JSON];
+    C --> F;
+    D --> F;
+    E --> F;
+```
 
-## Implementation plan
-- Rolling log of all code deltas
-- https://github.com/QuantGeekDev/mcp-framework
-- BoundryML BAML
-- MCP Server
-- Daemon
-- Event journal (Sqlite? Postgres - docker)
-- VS Code plugin
+## Validation Flow
 
-# To Research
-- Existing VS Code Code Quality and Linting Plugins
+```mermaid
+sequenceDiagram
+    participant User
+    participant CLI
+    participant ValidationEngine
+    participant Validators
+    User->>CLI: Run validation command
+    CLI->>ValidationEngine: Initialize validation
+    ValidationEngine->>Validators: Execute validation checks
+    Validators-->>ValidationEngine: Return results
+    ValidationEngine-->>CLI: Output validation report
+    CLI-->>User: Display results
+```
+
+## Future Plans
+- Expand into an MCP server, VS Code plugin, or daemon for real-time validation.
+- Enhance scalability to handle large sets of validation criteria.
 
 ## License
-
 This project is licensed under the MIT License.
 
-## Author
-
-Andrew Hopper (hopperab@gmail.com)
+## Contact
+For questions or feedback, please contact Andrew Hopper at hopperab@gmail.com.
