@@ -3,15 +3,16 @@
 	"version": "0.0.0",
 	"license": "MIT",
 	"bin": {
-		"dev": "dist/cli.js"
+		"watchman-ai": "dist/cli/index.js"
 	},
 	"type": "module",
 	"engines": {
 		"node": ">=16"
 	},
 	"scripts": {
-		"build": "babel --out-dir=dist src",
-		"dev": "babel --out-dir=dist --watch src",
+		"build": "tsc",
+		"dev": "tsc --watch",
+		"start": "node dist/cli/index.js",
 		"test": "prettier --check . && xo && ava"
 	},
 	"files": [

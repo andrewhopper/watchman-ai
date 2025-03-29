@@ -1,5 +1,5 @@
 // Entry point for the CLI
-import { validate } from '../validation/index';
+import { validate } from '../validation/index.js';
 
 console.log('=================================================');
 console.log('Watchman AI Command-Line Validation Tool Starting');
