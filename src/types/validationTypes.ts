@@ -7,6 +7,7 @@ export interface ValidationCheck {
 export interface ValidationResult {
     name: string;
     passed: boolean;
+    findings: string[]; // Array to store specific findings during validation
 }
 
 // Define interfaces for different rule types
@@ -28,6 +29,17 @@ export interface FilePresenceRule extends BaseValidationRule {
     files: string[];
 }
 
+export interface RegexCheckRule extends BaseValidationRule {
+    type: 'regexCheck';
+    filePath: string;
+    pattern: RegExp;
+}
+
+export interface CodebaseGrepRule extends BaseValidationRule {
+    type: 'codebaseGrep';
+    pattern: RegExp;
+}
+
 export interface PlaceholderRule extends BaseValidationRule {
     type: 'placeholder';
     message: string;
@@ -39,4 +51,4 @@ export interface CustomCommandRule extends BaseValidationRule {
 }
 
 // Union type for all rule types
-export type ValidationRule = FilePresenceRule | PlaceholderRule | CustomCommandRule;
+export type ValidationRule = FilePresenceRule | RegexCheckRule | CodebaseGrepRule | PlaceholderRule | CustomCommandRule;
