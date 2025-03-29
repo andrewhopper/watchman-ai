@@ -1,42 +1,111 @@
 [
     {
+        "name": "GitIgnore Content",
+        "type": "customCommand",
+        "command": "if [ -f .gitignore ]; then ENTRIES=0; grep -q 'node_modules' .gitignore && ((ENTRIES++)); grep -q '.DS_Store' .gitignore && ((ENTRIES++)); grep -q '.env/' .gitignore && ((ENTRIES++)); if [ $ENTRIES -eq 3 ]; then exit 0; elif [ $ENTRIES -gt 0 ]; then exit 2; else exit 1; fi; else exit 1; fi",
+        "systemPrompt": "Add the following entries to the .gitignore file if they don't exist: node_modules, .DS_Store, and .env/*. These entries prevent unnecessary or sensitive files from being committed to the repository. Check the current content of .gitignore first, then add any missing entries.",
+        "userInstructions": "Open your .gitignore file and ensure it contains the following entries on separate lines:\n- node_modules\n- .DS_Store\n- .env/*\n\nIf any of these entries are missing, add them to the file and save it.",
+        "statusMessages": {
+            "fullCompliance": "The .gitignore file contains all required entries: node_modules, .DS_Store, and .env/*.",
+            "partialCompliance": "The .gitignore file exists but is missing some required entries.",
+            "noCompliance": "The .gitignore file is missing or does not contain any of the required entries.",
+            "notApplicable": "This rule is not applicable to the current project."
+        }
+    },
+    {
         "name": "License File",
         "type": "filePresence",
         "files": [
             "LICENSE",
             "LICENSE.md"
-        ]
+        ],
+        "systemPrompt": "Create a LICENSE file for the project. Use MIT license unless otherwise specified. Place the file in the root directory of the project.",
+        "userInstructions": "Create a LICENSE file in the root directory of your project. You can use a standard license template like MIT, Apache, or GPL depending on your project requirements.",
+        "statusMessages": {
+            "fullCompliance": "The project has a valid LICENSE file.",
+            "partialCompliance": "The project has a LICENSE file but it may need review.",
+            "noCompliance": "The project is missing a LICENSE file.",
+            "notApplicable": "This rule is not applicable to the current project."
+        }
     },
     {
         "name": "README File",
         "type": "filePresence",
         "files": [
             "readme.md"
-        ]
+        ],
+        "systemPrompt": "Create a README.md file for the project. Include sections for project description, installation instructions, usage examples, and contribution guidelines. Place the file in the root directory of the project.",
+        "userInstructions": "Create a README.md file in the root directory of your project. Include essential information such as project description, installation steps, usage examples, and how others can contribute to the project.",
+        "statusMessages": {
+            "fullCompliance": "The project has a README.md file.",
+            "partialCompliance": "The project has a README file but it may need more content.",
+            "noCompliance": "The project is missing a README file.",
+            "notApplicable": "This rule is not applicable to the current project."
+        }
     },
     {
         "name": "DB Schema Management",
         "type": "placeholder",
-        "message": "DB Schema Management check executed."
+        "message": "DB Schema Management check executed.",
+        "systemPrompt": "Verify that the project has proper database schema management. Check for migration files, schema definitions, and database configuration. Ensure that there are mechanisms for schema versioning and migration.",
+        "userInstructions": "Implement proper database schema management in your project. This includes creating migration files, defining your schema clearly, and setting up database configuration. Make sure you have a way to version and migrate your database schema.",
+        "statusMessages": {
+            "fullCompliance": "The project has proper database schema management.",
+            "partialCompliance": "The project has some database schema management but needs improvement.",
+            "noCompliance": "The project is missing database schema management.",
+            "notApplicable": "This rule is not applicable to the current project."
+        }
     },
     {
         "name": "Authorization Good",
         "type": "placeholder",
-        "message": "Authorization check executed."
+        "message": "Authorization check executed.",
+        "systemPrompt": "Verify that the project implements proper authorization mechanisms. Check for role-based access control, permission validation, and secure authorization flows. Ensure that sensitive operations are protected by appropriate authorization checks.",
+        "userInstructions": "Implement proper authorization in your project. This includes setting up role-based access control, validating permissions before allowing actions, and securing all authorization flows. Make sure all sensitive operations require appropriate authorization.",
+        "statusMessages": {
+            "fullCompliance": "The project has proper authorization mechanisms.",
+            "partialCompliance": "The project has some authorization mechanisms but needs improvement.",
+            "noCompliance": "The project is missing proper authorization mechanisms.",
+            "notApplicable": "This rule is not applicable to the current project."
+        }
     },
     {
         "name": "Authentication Good",
         "type": "placeholder",
-        "message": "Authentication check executed."
+        "message": "Authentication check executed.",
+        "systemPrompt": "Verify that the project implements proper authentication mechanisms. Check for secure password handling, multi-factor authentication options, session management, and protection against common authentication vulnerabilities like brute force attacks.",
+        "userInstructions": "Implement proper authentication in your project. This includes secure password handling, offering multi-factor authentication, proper session management, and protecting against common authentication vulnerabilities.",
+        "statusMessages": {
+            "fullCompliance": "The project has proper authentication mechanisms.",
+            "partialCompliance": "The project has some authentication mechanisms but needs improvement.",
+            "noCompliance": "The project is missing proper authentication mechanisms.",
+            "notApplicable": "This rule is not applicable to the current project."
+        }
     },
     {
         "name": "Build Passes",
         "type": "customCommand",
-        "command": "npm run build"
+        "command": "npm run build",
+        "systemPrompt": "Verify that the project builds successfully without errors. Run the build command and check for any compilation errors, linting issues, or other build failures. Fix any issues that prevent the build from completing successfully.",
+        "userInstructions": "Ensure your project builds successfully by running 'npm run build'. Fix any compilation errors, linting issues, or other build failures that may occur.",
+        "statusMessages": {
+            "fullCompliance": "The project builds successfully without errors.",
+            "partialCompliance": "The project builds but with warnings that should be addressed.",
+            "noCompliance": "The project fails to build due to errors.",
+            "notApplicable": "This rule is not applicable to the current project."
+        }
     },
     {
         "name": "Testing Present",
         "type": "placeholder",
-        "message": "Testing presence check executed."
+        "message": "Testing presence check executed.",
+        "systemPrompt": "Verify that the project has proper testing setup. Check for test files, testing frameworks, and test scripts in package.json. Ensure that there are unit tests, integration tests, and possibly end-to-end tests depending on the project requirements.",
+        "userInstructions": "Implement proper testing in your project. This includes setting up testing frameworks, writing unit tests, integration tests, and possibly end-to-end tests. Make sure you have test scripts configured in your package.json.",
+        "statusMessages": {
+            "fullCompliance": "The project has proper testing setup with good test coverage.",
+            "partialCompliance": "The project has some tests but needs more coverage.",
+            "noCompliance": "The project is missing tests.",
+            "notApplicable": "This rule is not applicable to the current project."
+        }
     }
 ]

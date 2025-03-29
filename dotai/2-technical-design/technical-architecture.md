@@ -22,6 +22,22 @@ This document outlines the technical architecture for the Watchman AI Command-Li
 2. **Processing:** Validation engine processes the criteria and generates results.
 3. **Output:** Report generator formats the results into a user-friendly report.
 
-## Integration Points
+## UML Sequence Diagram
+
+```mermaid
+sequenceDiagram
+    participant User
+    participant CLI
+    participant ValidationEngine
+    participant ReportGenerator
+
+    User->>CLI: Input validation criteria
+    CLI->>ValidationEngine: Process criteria
+    ValidationEngine->>ValidationEngine: Execute validation rules
+    ValidationEngine->>CLI: Return validation results
+    CLI->>ReportGenerator: Generate report
+    ReportGenerator->>User: Display report
+```
+
 - **Agno Framework:** Utilized for validation processing.
 - **Future Integrations:** Potential expansion into an MCP server or VS Code plugin for real-time validation.
